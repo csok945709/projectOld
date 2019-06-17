@@ -1,5 +1,5 @@
 <?php
-include("../include/header.php");
-include("../include/navbar.php");
-include("../include/footer.php");
+include_once("../include/header.php");
+include_once("../include/navbar.php");
+include_once("../include/footer.php");
 ?>
