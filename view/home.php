@@ -5,20 +5,33 @@ if (empty($_SESSION['user'])) {
     header('location: ../view/loginView.php');
 }
 ?>
-
-<div id="navCss" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal" style="font-weight:600 !important;"><a href="index.php" style="text-decoration: none;">IT Knowledege Sharing</a></h5>
-  <nav class="my-2 my-md-0 mr-md-3" style="font-weight:600 !important;">
-    <a class="p-2 text-dark" href="#">Seek Consultant</a>
-    <a class="p-2 text-dark" href="#">Online Courses</a>
-    <a class="p-2 text-dark" href="#">Knowledge</a>
-    <a class="p-2 text-dark" href="#">IT Blog</a>
-    <a class="p-2 text-dark" href="#">Q & A Forum</a>
-  
-  </nav>
- 
+<div class="bg-white border-bottom shadow-sm">
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+	<h5 class="my-0 font-weight-normal" style="font-weight:600 !important;"><a href="index.php" style="text-decoration: none;">IT Knowledege Sharing</a></h5>
+		<ul class="nav navbar-nav" style="width:60%;display:inline-block;float:none;">
+			<li style="display:inline"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
+			<li style="display:inline"><a class="p-2 text-dark" href="#">Online Courses</a></li>
+			<li style="display:inline"><a class="p-2 text-dark" href="#">Knowledge</a></li>
+			<li style="display:inline"><a class="p-2 text-dark" href="#">IT Blog</a></li>
+			<li style="display:inline"><a class="p-2 text-dark" href="#">Q & A Forum</a></li>
+   		</ul>
+		<ul class="nav navbar-nav navbar-right" style="margin:5px 5px;">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-size:20px;font-weight:600;color:gray;text-decoration:none">
+    		<img src="images/admin.jpg" style="width:40px;height:auto" class="profile-image img-circle"> 
+			<?php echo $_SESSION['user']; ?> <b class="caret"></b></a>
+    	<ul class="dropdown-menu">
+        <li>
+			<a href="#"><i class="fa fa-cog"></i> Account</a>
+		</li><br/>
+        <li class="divider"></li>
+        <li>
+			<a href="logout.php?logout"><i class="fa fa-sign-out"></i> Sign-out</a>
+		</li>
+    </ul>
+	</div>
+</nav>
 </div>
-
 <div class="content" style="padding-top:50px;">
 		<!-- notification message -->
 		<?php if(isset($_SESSION['success'])) : ?>
