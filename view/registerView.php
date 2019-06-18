@@ -81,8 +81,8 @@ font-size: 20px;
 }    </style>
 
 
-<div class="container">
-      <div class="col-md-6 mx-auto text-center">
+<div class="container"  style="margin-top:70px">
+      <div class="text-center">
          <div class="header-title">
             <h1 class="wv-heading--title">
                Check out — it’s free!
@@ -122,13 +122,8 @@ font-size: 20px;
                         <span class="span-or">or</span>
                      </div>
                   </div>
-                  <div class="form-group">
-                     <a class="btn btn-block g-button" href="#">
-                     <i class="fa fa-google"></i> Sign up with Google
-                     </a>
-                  </div>
                   <div style="text-align:center">
-                    <p>Already have an account? <a href="#">Login Here</a></p>
+                    <p>Already have an account? <a href="loginView.php">Login Here</a></p>
                   </div>
                </form>
             </div>
@@ -136,6 +131,6 @@ font-size: 20px;
       </div>
    </div>
 
-   <?php 
-include_once("../include/footer.php");
-?>
+<div style="width:100%;text-align:center;position:absolute;bottom:0px">
+<?php include_once '../include/footer.php';?>
+</div>

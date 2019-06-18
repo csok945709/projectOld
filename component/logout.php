@@ -10,6 +10,6 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['admin']))
 if(isset($_GET['logout']))
 {
 	session_destroy();
-	header("Location: view/index.php");
+	header("Location: ../view/index.php");
 }
 ?>

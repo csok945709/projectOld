@@ -1,12 +1,67 @@
-<div id="navCss" class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal" style="font-weight:600 !important;"><a href="index.php" style="text-decoration: none;">IT Knowledege Sharing</a></h5>
-  <nav class="my-2 my-md-0 mr-md-3" style="font-weight:600 !important;">
-    <a class="p-2 text-dark" href="#">Seek Consultant</a>
-    <a class="p-2 text-dark" href="#">Online Courses</a>
-    <a class="p-2 text-dark" href="#">Knowledge</a>
-    <a class="p-2 text-dark" href="#">IT Blog</a>
-    <a class="p-2 text-dark" href="#">Q & A Forum</a>
+<?php 
+session_start();//start session if session not start
+if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+{
+?>
+
+<div id="navCss" class="bg-white shadow-sm">
+  <nav class="nav navbar">
+    <div class="container-fluid">
+      <h5 class="my-0 mr-md-auto" style="font-weight:600">
+        <a href="index.php" style="font-size:20;text-decoration: none;">IT Knowledege Sharing</a>
+      </h5>
+      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Online Courses</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Knowledge</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">IT Blog</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Q & A Forum</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="display:inline" >
+        <li>
+          <a style=" margin-right: 10px;width:80px;" class="btn btn-outline-primary" href="../view/registerView.php">Sign up</a>
+        </li>
+        <li>
+          <a style="width:80px;" class="btn btn-outline-primary" href="../view/loginView.php">Login</a>
+        </li>	
+        </ul>
+    </div>
   </nav>
-  <a style=" margin-right: 10px;width:80px;" class="btn btn-outline-primary" href="../view/registerView.php">Sign up</a>
-  <a style="width:80px;" class="btn btn-outline-primary" href="../view/loginView.php">Login</a>
 </div>
+
+<?php }else{
+
+?>
+
+<div id="navCss" class="bg-white shadow-sm">
+  <nav class="nav navbar">
+    <div class="container-fluid">
+      <h5 class="my-0 mr-md-auto" style="font-weight:600">
+        <a href="index.php" style="font-size:20;text-decoration: none;">IT Knowledege Sharing</a>
+      </h5>
+      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Online Courses</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Knowledge</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">IT Blog</a></li>
+        <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Q & A Forum</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin:5px 5px;" >
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="font-weight:600;color:gray;text-decoration:none;position:relative;">
+    		<img src="../assets/images/user.png" style="width:40px;height:auto" class="profile-image img-circle"> 
+			<?php echo $_SESSION['user']; ?></a>
+    	<ul class="dropdown-menu" style="position:absolute;margin-right:5px;">
+        	<li>
+				<a href="../view/home.php"><i class="fa fa-cog"></i> Account</a>
+			</li>
+        	<li class="divider"></li>
+        	<li>
+				<a href="../component/logout.php?logout"><i class="fa fa-sign-out"></i> Sign-out</a>
+			</li>	
+    	</ul>
+    </div>
+  </nav>
+</div>
+
+  <!--/.Navbar -->
+  <?php  }?>
