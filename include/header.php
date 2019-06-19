@@ -1,5 +1,6 @@
 <?php
 include("../config/dbconnect.php");
+session_start();//start session if session not start
 ?>
 <html lang="en">
 <head>
@@ -16,6 +17,7 @@ include("../config/dbconnect.php");
 <link rel="stylesheet" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="../assets/css/custom.css">
+<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
 </head>
 <body>
 

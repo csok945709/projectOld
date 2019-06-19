@@ -1,6 +1,5 @@
 <?php
 include_once("../include/header.php");
-session_start();
 
 //variable declaration
 $username = "";
@@ -51,8 +50,11 @@ function register()
 			$query = "INSERT INTO users(userName, userPassword, userEmail, userType, userStatus) VALUES ('$username', '$password', '$email', '1', '1')";
 			mysqli_query($con, $query);
 			//get id of the created user
-			$logged_in_user_id = mysqli_insert_id($con);
-			$_SESSION['userName'] = getUserById($logged_in_user_id);//put logged in user in session
+			$query_reg_user = "SELECT * FROM users WHERE userName = '$username' AND userType='1'";
+			$result = mysqli_query($con, $query_reg_user);
+			$row = mysqli_fetch_array($result);
+			$_SESSION['user'] = $row['userName'];
+			$_SESSION['userID'] = $row['userID'];
 			$_SESSION['success'] = "You are now logged in";
 			header('location:../view/home.php');
 	}else{
@@ -72,20 +74,30 @@ if (isset($_POST['login'])) {
 		{
 			array_push($errors,"Password is required");
 		}
-		//register user if there are no errors in the form
+		//login user if there are no errors in the form
 		if(count($errors) == 0)
 		{
 			$password = md5($password);
 			$query_user = "SELECT * FROM users WHERE userName = '$username' AND userPassword='$password' AND userType='1'";
-			$result = mysqli_query($con, $query_user);
-			$row = mysqli_fetch_array($result);
+			$resultUser = mysqli_query($con, $query_user);
+			$row = mysqli_fetch_array($resultUser);
 
-				if(mysqli_num_rows($result) > 0) {
+			$query_admin = "SELECT * FROM users WHERE userName = '$username' AND userPassword='$password' AND userType='2'";
+			$resultAdmin = mysqli_query($con, $query_admin);
+			$row1 = mysqli_fetch_array($resultAdmin);
+
+				if(mysqli_num_rows($resultUser) > 0) {
 					//user login
-				session_start();
-				$_SESSION['user'] = $row['userName'];
-				$_SESSION['success'] ="You are logged in";
-				header('location:../view/home.php'); 
+					$_SESSION['user'] = $row['userName'];
+					$_SESSION['userID'] = $row['userID'];
+					$_SESSION['success'] ="User You are logged in";
+					header('location:../view/home.php'); 
+				}elseif (mysqli_num_rows($resultAdmin) > 0) {
+					//Admin login
+					$_SESSION['admin'] = $row1['userName'];
+					$_SESSION['userID'] = $row1['userID'];
+					$_SESSION['success'] ="Admin You are logged in";
+					header('location:../view/adminView.php'); 
 				}else{
 					array_push($errors, "Wrong username/Password combination");	
 				}
@@ -95,7 +107,7 @@ if (isset($_POST['login'])) {
 //return user array from their id
 function getUserById($id)
 {
-	global $con;
+	global $con,$user;
 	$query = "SELECT * FROM users WHERE id=".$id;
 	$result = mysqli_query($con, $query);
 

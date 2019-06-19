@@ -94,7 +94,7 @@ font-size: 20px;
          <div class="col-md-4 mx-auto">
             <div class="myform form ">
                <form action="loginView.php" method="post" name="login">
-               <?php echo display_error();?>
+               <?php echo display_error();?><br/>
                   <div class="form-group">
                      <input type="text" name="username"  class="form-control my-input" id="name" placeholder="Name" required>
                   </div>
