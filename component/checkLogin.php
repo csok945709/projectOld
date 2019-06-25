@@ -47,7 +47,7 @@ function register()
 	if(count($errors) == 0)
 	{
 		$password = md5($password_1);//encrypt the password before saving in the database
-			$query = "INSERT INTO users(userName, userPassword, userEmail, userType, userStatus) VALUES ('$username', '$password', '$email', '1', '1')";
+			$query = "INSERT INTO users(userName, userPassword, userEmail, userType, userPermission, userStatus) VALUES ('$username', '$password', '$email', '1', '0', '1')";
 			mysqli_query($con, $query);
 			//get id of the created user
 			$query_reg_user = "SELECT * FROM users WHERE userName = '$username' AND userType='1'";
@@ -55,6 +55,7 @@ function register()
 			$row = mysqli_fetch_array($result);
 			$_SESSION['user'] = $row['userName'];
 			$_SESSION['userID'] = $row['userID'];
+			$_SESSION['userPermission'] = $row['userPermission'];
 			$_SESSION['success'] = "You are now logged in";
 			header('location:../view/home.php');
 	}else{
@@ -90,12 +91,14 @@ if (isset($_POST['login'])) {
 					//user login
 					$_SESSION['user'] = $row['userName'];
 					$_SESSION['userID'] = $row['userID'];
+					$_SESSION['userPermission'] = $row['userPermission'];
 					$_SESSION['success'] ="User You are logged in";
 					header('location:../view/home.php'); 
 				}elseif (mysqli_num_rows($resultAdmin) > 0) {
 					//Admin login
 					$_SESSION['admin'] = $row1['userName'];
 					$_SESSION['userID'] = $row1['userID'];
+					$_SESSION['userPermission'] = $row1['userPermission'];
 					$_SESSION['success'] ="Admin You are logged in";
 					header('location:../view/adminView.php'); 
 				}else{
