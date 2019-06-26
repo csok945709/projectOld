@@ -85,7 +85,7 @@ if (isset($_POST['login'])) {
 
 			$query_admin = "SELECT * FROM users WHERE userName = '$username' AND userPassword='$password' AND userType='2'";
 			$resultAdmin = mysqli_query($con, $query_admin);
-			$row1 = mysqli_fetch_array($resultAdmin);
+			$row1 = mysqli_fetch_array($resultAdmin);	
 
 				if(mysqli_num_rows($resultUser) > 0) {
 					//user login

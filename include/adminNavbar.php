@@ -12,7 +12,7 @@ if (empty($_SESSION['admin'])) {
 	</h5>
 		<ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
 			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="">Manage Consultant</a></li>
-			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Manage Courses</a></li>
+			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/adminManageCourse.php">Manage Courses</a></li>
 			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Manage Knowledge</a></li>
 			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Manage IT Blog</a></li>
 			<li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Manage Q & A Forum</a></li>

@@ -1,27 +1,46 @@
 <?php
 include_once("../include/header.php");
 include("../component/checkLogin.php");
-include_once("../include/userNavbar.php");
+include_once("../include/adminNavbar.php");
 
 if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
 	header("Location: index.php");
 }
+
+
 ?> 
 
 
     <div class="content">
         <!-- Include Left Panel -->
-        <?php include_once("../include/userLeftPanel/userCoursePanel.php"); ?>
+        <?php include_once("../include/adminLeftPanel/adminCoursePanel.php"); ?>
         
         <!-- Right Panel -->
         <div class="col-md-6">
             <div class="panel panel-default col-lg-offset-1">
                 <div class="panel-heading">
-                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">Create course Here</h2>
+                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">Organizer Request</h2>
                 </div>
-                    <div class="panel-body">
-                       Here Is Course Main Manage Page
+                <div class="panel-body">
+                    <table id="courseRequest" class="display">
+                        <thead>
+                            <tr>
+                                <th>Column 1</th>
+                                <th>Column 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Row 1 Data 1</td>
+                                <td>Row 1 Data 2</td>
+                            </tr>
+                            <tr>
+                                <td>Row 2 Data 1</td>
+                                <td>Row 2 Data 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -35,3 +54,8 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 </div>
 
 
+<script>
+    $(document).ready( function () {
+        $('#courseRequest').DataTable();
+    } );
+</script>
