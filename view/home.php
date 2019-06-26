@@ -1,7 +1,13 @@
 <?php
 include_once("../include/header.php");
 include_once("../include/userNavbar.php");
-?>
+
+if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+{
+	header("Location: loginview.php");
+}
+?> 
+
 
 <div class="content" style="padding-top:50px;">
 		<!-- notification message -->
