@@ -3,14 +3,25 @@ include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/userNavbar.php");
 // include_once("../component/organizerApply.php");
+$query_status =mysqli_query($con,"SELECT * FROM organizer WHERE userID ='".$_SESSION['userID']."' ") ;
+while($row=mysqli_fetch_array($query_status)){
+
+
 
 if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
 	header("Location: loginview.php");
 }else {
-	if ($_SESSION['userPermission'] === '1'){
-		header("Location: createCourseView.php");
-	}
+	if($row['userID'] === $_SESSION['userID'] ){
+        header("Location: ../view/organizerApplyPending.php");
+    }else{
+        if ($row['organizerStatus'] === '0'){
+            header("Location: ../view/organizerApplyForm.php");
+        }else{
+            header("Location: ../view/createCourseView.php");
+        }
+    }
+}
 }
 ?> 
 

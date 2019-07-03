@@ -53,9 +53,9 @@ function register()
 			$query_reg_user = "SELECT * FROM users WHERE userName = '$username' AND userType='1'";
 			$result = mysqli_query($con, $query_reg_user);
 			$row = mysqli_fetch_array($result);
+
 			$_SESSION['user'] = $row['userName'];
 			$_SESSION['userID'] = $row['userID'];
-			$_SESSION['userPermission'] = $row['userPermission'];
 			$_SESSION['success'] = "You are now logged in";
 			header('location:../view/home.php');
 	}else{
@@ -85,20 +85,18 @@ if (isset($_POST['login'])) {
 
 			$query_admin = "SELECT * FROM users WHERE userName = '$username' AND userPassword='$password' AND userType='2'";
 			$resultAdmin = mysqli_query($con, $query_admin);
-			$row1 = mysqli_fetch_array($resultAdmin);	
+			$row1 = mysqli_fetch_array($resultAdmin);
 
 				if(mysqli_num_rows($resultUser) > 0) {
 					//user login
 					$_SESSION['user'] = $row['userName'];
 					$_SESSION['userID'] = $row['userID'];
-					$_SESSION['userPermission'] = $row['userPermission'];
 					$_SESSION['success'] ="User You are logged in";
 					header('location:../view/home.php'); 
 				}elseif (mysqli_num_rows($resultAdmin) > 0) {
 					//Admin login
 					$_SESSION['admin'] = $row1['userName'];
 					$_SESSION['userID'] = $row1['userID'];
-					$_SESSION['userPermission'] = $row1['userPermission'];
 					$_SESSION['success'] ="Admin You are logged in";
 					header('location:../view/adminView.php'); 
 				}else{

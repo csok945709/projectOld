@@ -2,9 +2,10 @@
     include '../include/header.php'; 
     include '../include/navbar.php'; 
 
-    // session_start();//start session if session not start
-    // if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
-    // {
+    if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+    {
+        header("Location: loginview.php");
+    }
 ?>
 
  <div class="container" style="padding-top:70px;width:100%">

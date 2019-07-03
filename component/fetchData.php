@@ -1,6 +1,7 @@
+
+
 <?php
- session_start();//start session if session not start
-   include('../config/dbconnect.php');
+   include '../include/header.php'; 
 
    if(isset($_POST["action"]))
    {

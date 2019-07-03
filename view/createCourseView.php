@@ -3,13 +3,34 @@ include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/userNavbar.php");
 
+
+$query_status =mysqli_query($con,"SELECT * FROM organizer") ;
+while($orgData=mysqli_fetch_array($query_status)){
+
+
+
 if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
-	header("Location: loginview.php");
-}else {
-	if ($_SESSION['userPermission'] === '0') {
-		header("Location: organizerApplyForm.php");
-	}
+    header("Location: loginview.php");
+    
+}else{
+    
+	if($orgData['userID'] !== $_SESSION['userID'] ){
+        header("Location: ../view/organizerApplyForm.php");
+    }else{
+        $query_status =mysqli_query($con,"SELECT * FROM organizer WHERE userID ='".$_SESSION['userID']."' ") ;
+        while($row=mysqli_fetch_array($query_status)){
+        if ($row['organizerStatus'] === '0'){
+            header("Location: ../view/organizerApplyForm.php");
+        }else{
+            header("Location: ../view/createCourseView.php");
+        }}
+    }}
+}
+
+if (!empty($_SESSION['msg'])) {
+    echo '<div class="container" style="width:100%;margin-left:31%;"><p class="alert alert-success"><strong>The organizer'.$_SESSION['msg'].'</strong></p></div>';
+    unset($_SESSION['msg']);
 }
 ?> 
 

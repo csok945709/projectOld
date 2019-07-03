@@ -17,6 +17,10 @@ if (isset($_POST['organizerApplySubmit'])) {
     ('$userID','$organizerName','$organizerExperience','$organizerPhoneNum','$organizerImg','$organizerCategory','$organizerLanguage','$organizerStatus')";
     
     $sql = mysqli_query($con, $query);
+
+    $_SESSION['msg']="Apply Success";
+    header("Location: ../view/createCourseView.php");
+
 }
 
 
