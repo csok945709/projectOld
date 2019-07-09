@@ -1,4 +1,5 @@
 <?php 
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 
 //create reward
@@ -21,7 +22,9 @@ if (isset($_POST['createBtn'])) {
     
     $sql = mysqli_query($con, $query);
 
-   
+    $_SESSION['msg']="Create Success";
+    header("Location: ../view/createCourseView.php");
+
 }
 
 

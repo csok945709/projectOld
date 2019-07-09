@@ -1,11 +1,12 @@
 <?php   
+    include '../config/dbconnect.php'; 
     include '../include/header.php'; 
     include '../include/navbar.php'; 
 
-    if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
-    {
-        header("Location: loginview.php");
-    }
+    // if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
+    // {
+    //     header("Location: loginview.php");
+    // }
 ?>
 
  <div class="container" style="padding-top:70px;width:100%">
@@ -14,7 +15,7 @@
          <br />
     <div class="col-md-3">      
     <div class="list-group">
-     <h3>Courses Category</h3>
+     <h3>Course Category</h3>
                     <?php
 
                     $query = "SELECT DISTINCT courseCategory FROM courses WHERE courseStatus = '1' ORDER BY courseCategory ASC";

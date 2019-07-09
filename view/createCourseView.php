@@ -1,6 +1,6 @@
 <?php
+include("../config/dbconnect.php");
 include_once("../include/header.php");
-include("../component/checkLogin.php");
 include_once("../include/userNavbar.php");
 
 
@@ -23,17 +23,17 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
         if ($row['organizerStatus'] === '0'){
             header("Location: ../view/organizerApplyForm.php");
         }else{
-            header("Location: ../view/createCourseView.php");
+           
         }}
     }}
 }
 
 if (!empty($_SESSION['msg'])) {
-    echo '<div class="container" style="width:100%;margin-left:31%;"><p class="alert alert-success"><strong>The organizer'.$_SESSION['msg'].'</strong></p></div>';
+    echo '<div class="container" style="width:46%;float:right;margin-right:25%;"><p class="alert alert-success"><strong>The Course '.$_SESSION['msg'].'</strong></p></div>';
     unset($_SESSION['msg']);
 }
-?> 
 
+?> 
 
 
 <div class="content">
@@ -93,25 +93,28 @@ if (!empty($_SESSION['msg'])) {
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="courseCategory">Course Category:</label>
                             <div class="col-sm-8">
-                            <input type="text" name="courseCategory" class="form-control" placeholder="Enter Course Category" autofocus="" required="">
-                                <!-- <select name="courseCategory" class="form-control">
+                            <!-- <input type="text" name="courseCategory" class="form-control" placeholder="Enter Course Category" autofocus="" required=""> -->
+                                <select name="courseCategory" class="form-control">
                                     <option value="">Select one Category</option>
                                     <option value="Development">Development</option>
-                                    <option value="Speech">Speech</option>  
-                                    <option value="Sharing">Sharing</option>
-                                </select> -->
+                                    <option value="Network & Security">Network & Security</option>  
+                                    <option value="Operating Systems">Operating Systems</option>
+                                    <option value="Hardware">Hardware</option>
+                                    <option value="IT Certification">IT Certification</option>
+                                    <option value="Others">Others</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="courseLanguage">Course Language:</label>
                             <div class="col-sm-8">
-                            <input type="text" name="courseLanguage" class="form-control" placeholder="Enter Course Language" autofocus="" required="">
-                            <!-- <select name="courseLanguage" class="form-control" required>
+                            <!-- <input type="text" name="courseLanguage" class="form-control" placeholder="Enter Course Language" autofocus="" required=""> -->
+                            <select name="courseLanguage" class="form-control" required>
                                     <option value="">Select one Language</option>
                                     <option value="English">English</option>
                                     <option value="Mandarin">Mandarin</option>  
                                     <option value="Others">Others</option>
-                                </select> -->
+                                </select>
                             </div>
                         </div>
                             <!-- Insert status in db     -->

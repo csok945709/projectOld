@@ -1,4 +1,5 @@
 <?php
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/adminNavbar.php");
@@ -35,6 +36,7 @@ if (!empty($_SESSION['msg'])) {
                                 <th>Phone Number</th>
                                 <th>Category</th>
                                 <th>Language</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,6 +51,11 @@ while($row=mysqli_fetch_array($query))
                                <td><?php echo $row['organizerPhoneNum']; ?></td>
                                <td><?php echo $row['organizerCategory']; ?></td>
                                <td><?php echo $row['organizerLanguage']; ?></td>
+                               <td><?php if ($row['organizerStatus'] == 1) {
+                                   echo 'Approve';
+                               }else {
+                                   echo 'Reject';
+                               }?></td>
                                <td><button type="button"class="btn btn-primary" onclick="location.href = 'viewOrganizerDetail.php?organizerID=<?php echo $row['organizerID'] ?>';">View More</button> &nbsp; 
 
                                

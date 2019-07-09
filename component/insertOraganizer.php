@@ -1,4 +1,5 @@
 <?php 
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 
 if($_GET["organizerStatus"] === "Approve")

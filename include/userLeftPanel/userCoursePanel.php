@@ -6,7 +6,7 @@
                 </div>
                    <div class="panel-body" style="text-align:center;">
                         <a href="../view/createCourseView.php" style="font-weight:600;font-size:15px;text-decoration:none;">Create New Course</a><br/>
-                        <a href="#" style="font-weight:600;font-size:15px;text-decoration:none;">View Register Course</a>
+                        <a href="../view/viewMyCourse.php" style="font-weight:600;font-size:15px;text-decoration:none;">View My Course</a>
                    </div>
                 
             </div>

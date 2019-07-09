@@ -1,8 +1,9 @@
 <?php
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/userNavbar.php");
-// include_once("../component/organizerApply.php");
+
 $query_status =mysqli_query($con,"SELECT * FROM organizer WHERE userID ='".$_SESSION['userID']."' ") ;
 while($row=mysqli_fetch_array($query_status)){
 

@@ -1,5 +1,4 @@
 <?php
-include("../config/dbconnect.php");
 session_start();//start session if session not start
 ?>
 <html lang="en">

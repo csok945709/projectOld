@@ -1,4 +1,5 @@
 <?php
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/userNavbar.php");

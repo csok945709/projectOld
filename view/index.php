@@ -1,4 +1,5 @@
 <?php
+include_once("../config/dbconnect.php");
 include_once("../include/header.php");
 include_once("../include/navbar.php");
 ?>

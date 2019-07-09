@@ -1,4 +1,5 @@
 <?php
+include("../config/dbconnect.php");
 include_once("../include/header.php");
 include("../component/checkLogin.php");
 include_once("../include/adminNavbar.php");
@@ -28,7 +29,7 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
                 ?>
                 <div width="200px">
                     <div>
-                    <img src="../assets/images/courses/<?php echo $row['organizerImg'] ?>" class="img-responsive" style="float:right;margin-right:30%;width:182px;height:200px;margin-bottom:20px">
+                    <img src="../assets/images/<?php echo $row['organizerImg'] ?>" class="img-responsive" style="float:right;margin-right:30%;width:182px;height:200px;margin-bottom:20px">
                     </div>
                     <h4>Name: <?php echo $row ['organizerName'];?></h4>
                     <h4>Phone Number: <?php echo $row ['organizerPhoneNum'];?></h4>

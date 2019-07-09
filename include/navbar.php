@@ -1,5 +1,4 @@
 <?php 
-include_once("../include/header.php");
 if(isset($_SESSION['admin']))
 {
 ?>
@@ -10,7 +9,7 @@ if(isset($_SESSION['admin']))
       <h5 class="my-0 mr-md-auto" style="font-weight:600">
         <a href="index.php" style="font-size:20;text-decoration: none;">IT Knowledege Sharing</a>
       </h5>
-      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
+      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600;">
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Online Courses</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Knowledge</a></li>
@@ -43,7 +42,7 @@ if(isset($_SESSION['admin']))
       <h5 class="my-0 mr-md-auto" style="font-weight:600">
         <a href="index.php" style="font-size:20;text-decoration: none;">IT Knowledege Sharing</a>
       </h5>
-      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
+      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600;">
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Online Courses</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Knowledge</a></li>
@@ -71,13 +70,13 @@ if(isset($_SESSION['admin']))
   <?php  }else{?>
    
 <!-- Non Member Navbar -->
-<div id="navCss" class="bg-white shadow-sm">
-  <nav class="nav navbar">
-    <div class="container-fluid">
+<div class="bg-white shadow-sm">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid"></div>
       <h5 class="my-0 mr-md-auto" style="font-weight:600">
         <a href="index.php" style="font-size:20;text-decoration: none;">IT Knowledege Sharing</a>
       </h5>
-      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600; !important;">
+      <ul class="nav navbar-nav" style="width:60%;display:inline-block;font-size:16;font-weight:600;">
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Seek Consultant</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="../view/courseView.php">Online Courses</a></li>
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Knowledge</a></li>
@@ -85,11 +84,11 @@ if(isset($_SESSION['admin']))
         <li style="display:inline;margin-right:5px;"><a class="p-2 text-dark" href="#">Q & A Forum</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" style="display:inline" >
-        <li>
-          <a style=" margin-right: 10px;width:80px;" class="btn btn-outline-primary" href="../view/registerView.php">Sign up</a>
+        <li id="navBtn" >
+          <a style="margin:5px 10px 3px 0px;width:80px;color:white;height:43px"  id="btnNav" class="btn btn-warning" href="../view/registerView.php">Sign up</a>
         </li>
-        <li>
-          <a style="width:80px;" class="btn btn-outline-primary" href="../view/loginView.php">Login</a>
+        <li id="navBtn" >
+          <a style="margin:5px 10px 3px 0px;width:80px;color:white;height:43px" id="btnNav" class="btn btn-primary" href="../view/loginView.php">Login</a>
         </li>	
         </ul>
     </div>

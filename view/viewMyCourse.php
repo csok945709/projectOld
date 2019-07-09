@@ -2,7 +2,7 @@
 include("../config/dbconnect.php");
 include_once("../include/header.php");
 include("../component/checkLogin.php");
-include_once("../include/userNavbar.php");
+include_once("../include/adminNavbar.php");
 
 if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
@@ -24,44 +24,35 @@ if (!empty($_SESSION['msg'])) {
         <div class="col-md-8">
             <div class="panel panel-default col-lg-offset-1">
                 <div class="panel-heading">
-                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">Request Status</h2>
+                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">Organizer Request</h2>
                 </div>
                 <div class="panel-body">
                     <table id="courseRequest" class="display">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th>No.</th>
                                 <th>Name</th>
                                 <th>Experience</th>
                                 <th>Phone Number</th>
                                 <th>Category</th>
                                 <th>Language</th>
-                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody> 
-<?php $query=mysqli_query($con,"SELECT * FROM organizer WHERE userID ='".$_SESSION['userID']."' ");
+<?php $query=mysqli_query($con,"SELECT * FROM organizer WHERE organizerStatus = '0' ");
 while($row=mysqli_fetch_array($query))
 {  ?>
                             <tr>
-                                <td></td>
+                               <td></td>
                                <td><?php echo $row['organizerName']; ?></td>
                                <td><?php echo substr($row['organizerExperience'],0, 20); ?></td>
                                <td><?php echo $row['organizerPhoneNum']; ?></td>
                                <td><?php echo $row['organizerCategory']; ?></td>
                                <td><?php echo $row['organizerLanguage']; ?></td>
-                               <td><?php if ($row['organizerStatus'] === '0') {
-                                        echo 'Pending';
-                                    }else {
-                                        echo 'Approve';
-                                    }
-                                ?></td>
-                               <td>
-                                    <button type="button"class="btn btn-primary" onclick="location.href = 'viewOrganizerDetail.php?organizerID=<?php echo $row['organizerID'] ?>';">View More</button> &nbsp; 
-                                    <button type="button"class="btn btn-default">Edit</button> &nbsp; 
-                                    <button type="button" class="btn btn-danger">Cancel Request</button>
-                               </td>
+                               <td><button type="button"class="btn btn-primary" onclick="location.href = 'viewOrganizerDetail.php?organizerID=<?php echo $row['organizerID'] ?>';">View More</button> &nbsp; 
+                               <button type="button"class="btn btn-default">Approve</button> &nbsp; 
+                                    <button type="button" class="btn btn-danger">Reject</button></td>
                                
                             </tr>
 <?php }?>
@@ -81,8 +72,7 @@ while($row=mysqli_fetch_array($query))
 
 
 <script>
-  
-$(document).ready(function() {
+    $(document).ready(function() {
     var t = $('#courseRequest').DataTable( {
         "columnDefs": [ {
             "searchable": false,

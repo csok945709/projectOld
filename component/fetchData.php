@@ -1,6 +1,7 @@
 
 
 <?php
+include("../config/dbconnect.php");
    include '../include/header.php'; 
 
    if(isset($_POST["action"]))
