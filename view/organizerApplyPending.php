@@ -16,7 +16,7 @@ if (!empty($_SESSION['msg'])) {
 }
 ?> 
 
-    <div class="content">
+    <div class="container-fluid">
         <!-- Include Left Panel -->
         <?php include_once("../include/userLeftPanel/userCoursePanel.php"); ?>
         
@@ -75,7 +75,7 @@ while($row=mysqli_fetch_array($query))
 
 
 
-<div style="width:100%;text-align:center;position:absolute;bottom:0px">
+<div style="width:100%;text-align:center;position:relative;bottom:0px">
     <?php  include_once '../include/footer.php';?>
 </div>
 

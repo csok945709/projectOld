@@ -123,6 +123,6 @@ font-size: 20px;
          </div>
       </div>
    </div>
-<div style="width:100%;text-align:center;position:absolute;bottom:0px">
+<div style="width:100%;text-align:center;position:relative;bottom:0px">
 <?php include_once '../include/footer.php';?>
 </div>

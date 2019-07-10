@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 ?> 
 
 
-    <div class="content">
+    <div class="container-fluid">
         <!-- Include Left Panel -->
         <?php include_once("../include/userLeftPanel/userCoursePanel.php"); ?>
         

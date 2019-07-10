@@ -26,7 +26,7 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 }
 ?> 
 
-<div class="content">
+<div class="container-fluid">
 		<!-- Include Left Panel -->
         <?php include_once("../include/userLeftPanel/userCoursePanel.php"); ?>
         
@@ -104,7 +104,7 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 
 </div>
 </div>
-<div style="width:100%;text-align:center;position:absolute;bottom:0px">
+<div style="width:100%;text-align:center;position:relative;bottom:0px">
 <?php include_once '../include/footer.php';?>
 </div>
 

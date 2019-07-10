@@ -1,8 +1,7 @@
 <?php
 include("../config/dbconnect.php");
 include_once("../include/header.php");
-include("../component/checkLogin.php");
-include_once("../include/adminNavbar.php");
+include_once("../include/userNavbar.php");
 
 if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 {
@@ -16,7 +15,7 @@ if (!empty($_SESSION['msg'])) {
 }
 ?> 
 
-    <div class="content">
+    <div class="container-fluid">
         <!-- Include Left Panel -->
         <?php include_once("../include/userLeftPanel/userCoursePanel.php"); ?>
         
@@ -24,35 +23,35 @@ if (!empty($_SESSION['msg'])) {
         <div class="col-md-8">
             <div class="panel panel-default col-lg-offset-1">
                 <div class="panel-heading">
-                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">Organizer Request</h2>
+                    <h2 class="panel-title" style="font-size:20px;font-weight:600;text-align:center;">My Course</h2>
                 </div>
                 <div class="panel-body">
-                    <table id="courseRequest" class="display">
+                    <table id="viewMyCourse" class="display">
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Name</th>
-                                <th>Experience</th>
-                                <th>Phone Number</th>
-                                <th>Category</th>
-                                <th>Language</th>
+                                <th>Course Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Venue</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody> 
-<?php $query=mysqli_query($con,"SELECT * FROM organizer WHERE organizerStatus = '0' ");
+<?php $query=mysqli_query($con,"SELECT * FROM courses WHERE  createdBy = ".$_SESSION['userID']." & courseStatus = '1'") or die("Error: ".mysqli_error($con));
 while($row=mysqli_fetch_array($query))
 {  ?>
                             <tr>
                                <td></td>
-                               <td><?php echo $row['organizerName']; ?></td>
-                               <td><?php echo substr($row['organizerExperience'],0, 20); ?></td>
-                               <td><?php echo $row['organizerPhoneNum']; ?></td>
-                               <td><?php echo $row['organizerCategory']; ?></td>
-                               <td><?php echo $row['organizerLanguage']; ?></td>
-                               <td><button type="button"class="btn btn-primary" onclick="location.href = 'viewOrganizerDetail.php?organizerID=<?php echo $row['organizerID'] ?>';">View More</button> &nbsp; 
-                               <button type="button"class="btn btn-default">Approve</button> &nbsp; 
-                                    <button type="button" class="btn btn-danger">Reject</button></td>
+                               <td><?php echo $row['courseName']; ?></td>
+                               <td><?php echo substr($row['courseDescription'],0, 20); ?> ...</td>
+                               <td><?php echo $row['coursePrice']; ?></td>
+                               <td><?php echo $row['courseVenue']; ?></td>
+                               <td><?php echo $row['courseDate']; ?></td>
+                               <td><button type="button"class="btn btn-primary" onclick="location.href = 'viewMyCourseDetail.php?userID=<?php echo $_SESSION['userID'] ?>';">View More</button> &nbsp; 
+                               <button type="button"class="btn btn-default">Edit</button> &nbsp; 
+                                    <button type="button" class="btn btn-danger">Delete</button></td>
                                
                             </tr>
 <?php }?>
@@ -62,18 +61,17 @@ while($row=mysqli_fetch_array($query))
             </div>
         </div>
     </div>
-   
 
 
 
-<div style="width:100%;text-align:center;position:absolute;bottom:0px">
+<div style="width:100%;text-align:center;position:relative;bottom:0px">
     <?php  include_once '../include/footer.php';?>
 </div>
 
 
 <script>
     $(document).ready(function() {
-    var t = $('#courseRequest').DataTable( {
+    var t = $('#viewMyCourse').DataTable( {
         "columnDefs": [ {
             "searchable": false,
             "orderable": false,
