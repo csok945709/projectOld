@@ -36,8 +36,8 @@ include("../config/dbconnect.php");
       <div style="position:absolute;bottom:0px;margin:30px 0px;">
       <h6 style="font-weight:600;color:red;margin:15px 0px;font-size:18px" class="text-danger" >Start From : $'. $row['coursePrice'] .'</h6>
       
-      <a href="booking_ticket_page.php?courseID='. $row['courseID'] .'">
-      <button class="btn btn-warning" name="bookCourse" style="margin:0px 36px">Buy Now
+      <a href="../view/CourseDetail.php?courseID='. $row['courseID'] .'">
+      <button class="btn btn-warning" name="bookCourse" style="margin:0px 36px">Register Now
      </button>
      </a>
      </div>

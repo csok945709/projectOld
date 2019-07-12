@@ -16,7 +16,6 @@ if (isset($_POST['organizerApplySubmit'])) {
 
     $query = "INSERT INTO organizer (userID, organizerName,organizerExperience,organizerPhoneNum,organizerImg,organizerCategory,organizerLanguage,organizerStatus) VALUES
     ('$userID','$organizerName','$organizerExperience','$organizerPhoneNum','$organizerImg','$organizerCategory','$organizerLanguage','$organizerStatus')";
-    
     $sql = mysqli_query($con, $query);
 
     $_SESSION['msg']="Apply Success";

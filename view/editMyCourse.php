@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 
 
 if(isset($_POST['update'])){
-
+    
     $courseName=$_POST['courseName'];
     $coursePrice=$_POST['coursePrice'];
     $courseVenue=$_POST['courseVenue'];
@@ -21,10 +21,28 @@ if(isset($_POST['update'])){
     $courseLanguage=$_POST['courseLanguage'];
     $courseDescription=$_POST['courseDescription'];
     $userID=$_SESSION['userID'];
+    $courseImg=$_POST['courseImg'];
 
-    $query = ("UPDATE courses set courseName='$courseName',courseDescription='$courseDescription',coursePrice='$coursePrice',courseVenue='$courseVenue',
-    courseDate='$courseDate',courseTime='$courseTime',courseImg='$courseImg',courseCategory='$courseCategory' where courseID='$userID'") or die("Error in update Query. The error was : " . mysql_error());
+    if ($courseImg == "") {
+        $query = ("UPDATE courses set courseName='$courseName',courseDescription='$courseDescription',coursePrice='$coursePrice',courseVenue='$courseVenue',
+        courseDate='$courseDate',courseTime='$courseTime',courseCategory='$courseCategory',courseLanguage='$courseLanguage' WHERE courseID='$userID'");
+        $query = mysqli_query($con, $query);
+        $_SESSION['msg']="Update Success";
+        header("Location: ../view/viewMyCourseDetail.php?userID=".$userID);
+    }else {
+        $query = ("UPDATE courses set courseName='$courseName',courseDescription='$courseDescription',coursePrice='$coursePrice',courseVenue='$courseVenue',
+        courseDate='$courseDate',courseTime='$courseTime',courseImg='$courseImg',courseCategory='$courseCategory,courseLanguage='$courseLanguage' WHERE courseID='$userID'");
+        $query = mysqli_query($con, $query);
 
+        $_SESSION['msg']="Update Success";
+        header("Location: ../view/viewMyCourseDetail.php?userID=".$userID);
+    }
+
+    // if ($con->query($query) == TRUE) {
+    //     echo 'Insert Success';
+    // }else {
+    //     echo 'Cannot Insert';
+    // }
 }
    
 
@@ -51,22 +69,35 @@ if(isset($_POST['update'])){
                     <div  style="float:right;margin-right:30%;margin-bottom:20px">
                     <img src="../assets/images/courses/<?php echo $row['courseImg'] ?>" style="width:182px;height:200px;" class="img-responsive">
                     <label>Edit Course Image</label>
-                    <input type="file" name="courseImg">
+                    <input type="file" name="courseImg" value="<?php echo $row['courseImg'] ?>">
                     </div>
                     <label>Name:</label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseName" value="<?php echo $row ['courseName'];?>">
+                        <input type="text" class="form-control" style="width:45%;"  name="courseName" value="<?php echo $row ['courseName'];?>">
                     <label>Course Price:</label>
-                    <input type="text" class="form-control" style="width:45%;"  name="coursePrice" value="<?php echo $row ['coursePrice'];?>">
+                        <input type="text" class="form-control" style="width:45%;"  name="coursePrice" value="<?php echo $row ['coursePrice'];?>">
                     <label>Course Venue: </label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseVenue" value="<?php echo $row ['courseVenue'];?>">
+                        <input type="text" class="form-control" style="width:45%;"  name="courseVenue" value="<?php echo $row ['courseVenue'];?>">
                     <label>Course Start Date:</label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseDate" value=" <?php echo $row ['courseDate'];?>">
+                        <input type="text" class="form-control" style="width:45%;"  name="courseDate" value=" <?php echo $row ['courseDate'];?>">
                     <label>Course Start Time: </label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseTime" value="<?php echo $row ['courseTime'];?>">
+                        <input type="text" class="form-control" style="width:45%;"  name="courseTime" value="<?php echo $row ['courseTime'];?>">
                     <label>Course Category: </label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseCategory" value="<?php echo $row ['courseCategory'];?>">
+                        <select name="courseCategory" class="form-control" style="width:45%;">
+                        <option value="<?php echo $row ['courseCategory'];?>" style="display:none;" selected="selected"><?php echo $row ['courseCategory'];?></option>
+                                <option value="Development">Development</option>
+                                <option value="Network & Security">Network & Security</option>  
+                                <option value="Operating Systems">Operating Systems</option>
+                                <option value="Hardware">Hardware</option>
+                                <option value="IT Certification">IT Certification</option>
+                                <option value="Others">Others</option>
+                        </select>
                     <label>Course Language: </label>
-                    <input type="text" class="form-control" style="width:45%;"  name="courseLanguage" value="<?php echo $row ['courseLanguage'];?>">
+                        <select name="courseLanguage" class="form-control" style="width:45%;">
+                            <option value="<?php echo $row ['courseLanguage'];?>" style="display:none;" selected="selected"><?php echo $row ['courseLanguage'];?></option>
+                            <option value="English">English</option>
+                            <option value="Mandarin">Mandarin</option>  
+                            <option value="Others">Others</option>
+                        </select>
                    
                     <label>Course Description</label>
                     <textarea cols="30" style="width:70%;" class="form-control z-depth-1" rows="10" name="courseDescription" ><?php echo $row ['courseDescription'];?></textarea>
@@ -79,8 +110,8 @@ if(isset($_POST['update'])){
                     </label>
                     <input type="hidden" value="<?php echo $_SESSION ['userID'];?>">
                 <div style="margin-top:10px">
-                    <input type="submit" class="btn btn-primary" name="update">
-                    <a class="btn btn-warning" href="../view/viewMyCourse.php">Return Main Page</a>
+                    <input type="submit" class="btn btn-success" name="update">
+                    <a class="btn btn-info" href="../view/viewMyCourse.php">Return Main Page</a>
                 </div>
                 </div>
                 <?php }}

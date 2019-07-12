@@ -50,7 +50,7 @@ while($row=mysqli_fetch_array($query))
                                <td><?php echo $row['courseVenue']; ?></td>
                                <td><?php echo $row['courseDate']; ?></td>
                                <td><button type="button"class="btn btn-primary" onclick="location.href = 'viewMyCourseDetail.php?userID=<?php echo $_SESSION['userID'] ?>';">View More</button> &nbsp; 
-                               <button type="button"class="btn btn-default">Edit</button> &nbsp; 
+                               <a class="btn btn-warning" href="../view/editMyCourse.php?update&userID=<?php echo $_SESSION['userID'] ?>">Edit</a> &nbsp; 
                                     <button type="button" class="btn btn-danger">Delete</button></td>
                                
                             </tr>

@@ -3,6 +3,12 @@ include_once("../config/dbconnect.php");
 include_once("../include/header.php");
 include_once("../include/navbar.php");
 include("../component/checkLogin.php");
+
+
+if (!empty($_SESSION['loginMsg'])) {
+   echo '<div class="container" style="width:100%;margin-top:5%;text-align:center;font-size:18px"><p class="alert alert-danger"><strong>'.$_SESSION['loginMsg'].'</strong></p></div>';
+   unset($_SESSION['loginMsg']);
+}
 ?>
 
 

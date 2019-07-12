@@ -9,6 +9,10 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
 	header("Location: index.php");
 }
 
+if (!empty($_SESSION['msg'])) {
+    echo '<div class="container" style="width:100%;margin-left:31%;"><p class="alert alert-success"><strong>The Course'.$_SESSION['msg'].'</strong></p></div>';
+    unset($_SESSION['msg']);
+}
 ?> 
     <div class="container-fluid">
         <!-- Include Left Panel -->
@@ -22,9 +26,9 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
                 </div>
                 <div class="panel-body">
                 <?php  
-                    if(isset($_GET["userID"]))
+                    if(isset($_GET["courseID"]))
                     {
-                        $query=mysqli_query($con,"SELECT * FROM courses where createdBy ='$_GET[userID]'");
+                        $query=mysqli_query($con,"SELECT * FROM courses where courseID ='$_GET[courseID]'");
                         while($row=mysqli_fetch_array($query)){    
                 ?>
                 <div width="200px">
@@ -46,9 +50,9 @@ if(!isset($_SESSION['user']) && !isset($_SESSION['admin']))
                     </h4>
                     <textarea cols="30" style="width:70%;" class="form-control z-depth-1" rows="10" readonly><?php echo $row ['courseDescription'];?></textarea>
                 <div style="margin-top:10px">
-                    <a class="btn btn-primary" href="../view/editMyCourse.php?update&userID=<?php echo $_SESSION['userID'] ?>">Edit</a>
+                    <a class="btn btn-warning" href="../view/editMyCourse.php?update&userID=<?php echo $_SESSION['userID'] ?>">Edit</a>
                     <button class="btn btn-danger">Delete</button>
-                    <a class="btn btn-warning" href="../view/viewOrganizerRequest.php">Return Main Page</a>
+                    <a class="btn btn-info" href="../view/viewMyCourse.php">Return Main Page</a>
                 </div>
                 </div>
                 <?php }}
